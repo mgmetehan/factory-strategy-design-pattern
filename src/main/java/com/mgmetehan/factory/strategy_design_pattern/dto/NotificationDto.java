@@ -1,6 +1,7 @@
 package com.mgmetehan.factory.strategy_design_pattern.dto;
 
 import com.mgmetehan.factory.strategy_design_pattern.model.User;
+import com.mgmetehan.factory.strategy_design_pattern.type.NotificationType;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -9,11 +10,11 @@ import lombok.Setter;
 public class NotificationDto {
     private String to;
     private String body;
-    private String notificationType;
+    private NotificationType notificationType;
 
     public User toUser(NotificationDto dto) {
-        return User.builder()
-                .username(dto.getTo())
-                .build();
+        User user = new User();
+        user.setUsername(dto.getTo());
+        return user;
     }
 }

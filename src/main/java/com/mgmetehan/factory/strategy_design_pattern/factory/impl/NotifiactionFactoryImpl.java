@@ -3,6 +3,7 @@ package com.mgmetehan.factory.strategy_design_pattern.factory.impl;
 import com.mgmetehan.factory.strategy_design_pattern.dto.NotificationDto;
 import com.mgmetehan.factory.strategy_design_pattern.factory.NotifiactionFactory;
 import com.mgmetehan.factory.strategy_design_pattern.strategy.NotifiactionStrategy;
+import com.mgmetehan.factory.strategy_design_pattern.type.NotificationType;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -14,8 +15,8 @@ public class NotifiactionFactoryImpl implements NotifiactionFactory {
 
     private final Map<String, NotifiactionStrategy> notificationStrategyMap;
 
-    public NotifiactionStrategy getNotificationStrategy(String notificationType) {
-        var notificationStrategy = notificationStrategyMap.get(notificationType);
+    public NotifiactionStrategy getNotificationStrategy(NotificationType notificationType) {
+        var notificationStrategy = notificationStrategyMap.get(notificationType.getType());
         if (notificationStrategy == null) {
             throw new IllegalArgumentException("Notification type not found: " + notificationType);
         }
